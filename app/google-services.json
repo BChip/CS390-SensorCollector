@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "529894830554",
+    "firebase_url": "https://watertestkit-8b775.firebaseio.com",
+    "project_id": "watertestkit-8b775",
+    "storage_bucket": "watertestkit-8b775.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529894830554:android:b43f7b811df06be7",
+        "android_client_info": {
+          "package_name": "com.example.bradleychippi.water_test_kit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529894830554-icfa75u9aiur11ed1ogh38ts4jvoe5ud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bradleychippi.water_test_kit",
+            "certificate_hash": "a0b001ff29637b93c3e05de05bd1c67e14b66844"
+          }
+        },
+        {
+          "client_id": "529894830554-htr53v49dm6ug1n359hk77kq091ocnr3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2o65ak7A9fgi9ci_glW9LCujOBf57V6c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529894830554-htr53v49dm6ug1n359hk77kq091ocnr3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
