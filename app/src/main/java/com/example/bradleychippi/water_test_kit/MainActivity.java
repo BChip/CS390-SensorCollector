@@ -1,5 +1,6 @@
 package com.example.bradleychippi.water_test_kit;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Sensor Collector");
 
         mDrawerList = (ListView)findViewById(R.id.navList);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -102,8 +105,24 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(MainActivity.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, Long.toString(id));
+                switch(Long.toString(id)){
+                    case "0":
+                        Intent addSensorActivity = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(addSensorActivity);
+                        break;
+                    case "1":
+                        Toast.makeText(MainActivity.this, "FIX ME", Toast.LENGTH_SHORT).show();
+                        //GO TO INPUT DATA ACTIVITY
+                        break;
+
+                    case "2":
+                        Toast.makeText(MainActivity.this, "FIX ME", Toast.LENGTH_SHORT).show();
+                        //GO TO VIEW DATA ACTIVITY
+                        break;
+
+                    default:
+                        break;
+                }
             }
         });
     }
@@ -114,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Navigation!");
+                getSupportActionBar().setTitle("Menu");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
