@@ -2,4 +2,7 @@
     <string name="app_name">Water_Test_Kit</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="add_sensor">Add Sensor</string>
+    <string name="name_of_sensor">Name of Sensor</string>
+    <string name="current_sensors">Current Sensors:</string>
 </resources>

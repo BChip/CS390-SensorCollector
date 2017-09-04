@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class AddSensor extends AppCompatActivity {
 
     private static final String TAG = "ActivityManager";
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_sensor);
 
         setTitle("Sensor Collector");
 
@@ -107,16 +105,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(Long.toString(id)){
                     case "0":
-                        Intent addSensorActivity = new Intent(MainActivity.this, MainActivity.class);
+                        Intent addSensorActivity = new Intent(AddSensor.this, AddSensor.class);
                         startActivity(addSensorActivity);
                         break;
                     case "1":
-                        Toast.makeText(MainActivity.this, "FIX ME", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddSensor.this, "FIX ME", Toast.LENGTH_SHORT).show();
                         //GO TO INPUT DATA ACTIVITY
                         break;
 
                     case "2":
-                        Toast.makeText(MainActivity.this, "FIX ME", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddSensor.this, "FIX ME", Toast.LENGTH_SHORT).show();
                         //GO TO VIEW DATA ACTIVITY
                         break;
 
