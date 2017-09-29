@@ -1,3 +1,8 @@
+// App: Sensor Collector
+// Author: Bradley Chippi
+// Course: CS390
+// Instructor: Dr. Corser
+
 package com.example.bradleychippi.water_test_kit;
 
 import android.content.Intent;
@@ -13,8 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.example.bradleychippi.water_test_kit.R;
 
 abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
     private FrameLayout view_stub; //This is the framelayout to keep your content view
@@ -35,7 +38,7 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawerMenu = navigation_view.getMenu();
-        for(int i = 0; i < drawerMenu.size(); i++) {
+        for (int i = 0; i < drawerMenu.size(); i++) {
             drawerMenu.getItem(i).setOnMenuItemClickListener(this);
         }
         // and so on...
