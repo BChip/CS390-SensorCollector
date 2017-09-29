@@ -1,8 +1,12 @@
 package com.example.bradleychippi.water_test_kit;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataEntryPage extends AppCompatActivity {
+
+public class DataEntryPage extends AppBaseActivity {
 
     EditText currentData, currentLocation;
     Button addToTable, viewData;
@@ -73,7 +78,36 @@ public class DataEntryPage extends AppCompatActivity {
         startActivity(DataTable);
     }
 
+
     public void onSubmit(View view){
         //Send data to firebase db and clear edit text values
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Sensors:
+                Intent addSensor = new Intent(this, Sensors.class);
+                startActivity(addSensor);
+                return true;
+
+            case R.id.Data_Entry:
+                Intent dataEntry = new Intent(this, DataEntryPage.class);
+                startActivity(dataEntry);
+                return true;
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
 }
