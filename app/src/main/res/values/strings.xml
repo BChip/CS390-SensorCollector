@@ -5,4 +5,5 @@
     <string name="add_sensor">Add Sensor</string>
     <string name="name_of_sensor">Name of Sensor</string>
     <string name="current_sensors">Current Sensors:</string>
+    <string name="SelectOne"></string>
 </resources>
