@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,10 +29,10 @@ public class DataEntryPage extends AppBaseActivity {
     EditText currentData, currentLocation;
     Button addToTable, viewData;
 
-    //firebase database
+    private static final String TAG = "ActivityManager";
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("Sensors");
-    List<String> list = new ArrayList<String>();
+    List<String> sensors = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,33 +45,34 @@ public class DataEntryPage extends AppBaseActivity {
         currentData = (EditText) findViewById(R.id.CurrentData);
         currentLocation = (EditText) findViewById(R.id.Location);
 
+        final Spinner sensorSpinner = (Spinner) findViewById(R.id.SensorSpinner);
+        final ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, sensors);
+        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sensorSpinner.setAdapter(adp1);
 
-        myRef.child("Sensors").addValueEventListener(new ValueEventListener() {
+        //add all sensors to sensor select spinner
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                final List<String> sensors = new ArrayList<String>();
-
-                for(DataSnapshot sensorSnap : dataSnapshot.getChildren()){
-                    String sensorName = sensorSnap.child("SensorName").getValue(String.class);
-                    sensors.add(sensorName);
+                if (dataSnapshot.exists()) {
+                    sensors.clear();
+                    for(DataSnapshot sensorSnap : dataSnapshot.getChildren()){
+                        //String sensorName = sensorSnap.child("Sensors").getValue(String.class);
+                        sensors.add(sensorSnap.getKey());
+                    }
+                    sensorSpinner.setAdapter(adp1);}
+                else{
+                    sensorSpinner.setAdapter(null);
                 }
-
-                Spinner sensorSpinner = (Spinner) findViewById(R.id.SensorSpinner);
-                ArrayAdapter<String> adp1 = new ArrayAdapter<String>(DataEntryPage.this, android.R.layout.simple_spinner_item, sensors);
-                adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                sensorSpinner.setAdapter(adp1);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Failed to read value
+                Log.e(TAG, "Failed to read value.", databaseError.toException());
             }
         });
-
-
-
-
-
     }
 
     public void ViewData(View v){
