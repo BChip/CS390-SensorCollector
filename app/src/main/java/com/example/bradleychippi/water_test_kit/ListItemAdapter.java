@@ -1,3 +1,8 @@
+// App: Sensor Collector
+// Author: Waqas Qureshi
+// Course: CS390
+// Instructor: Dr. Corser
+
 package com.example.bradleychippi.water_test_kit;
 
 import android.content.Context;
@@ -14,8 +19,8 @@ import java.util.Date;
 import static android.content.ContentValues.TAG;
 
 /**
- * Created by waqas on 9/1/2017.
- */
+ * @author Waqas Qureshi
+ * */
 
 public class ListItemAdapter extends BaseAdapter {
 

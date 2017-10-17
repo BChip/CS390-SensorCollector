@@ -30,6 +30,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Bradley Chippi
+ * */
+
 public class Sensors extends AppBaseActivity {
 
     private static final String TAG = "ActivityManager";

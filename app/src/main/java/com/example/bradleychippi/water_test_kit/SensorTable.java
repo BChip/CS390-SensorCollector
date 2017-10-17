@@ -1,3 +1,8 @@
+// App: Sensor Collector
+// Author: Waqas Qureshi
+// Course: CS390
+// Instructor: Dr. Corser
+
 package com.example.bradleychippi.water_test_kit;
 
 import android.nfc.Tag;
@@ -7,6 +12,10 @@ import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+/**
+ * @author Waqas Qureshi
+ * */
 
 public class SensorTable extends AppCompatActivity {
 

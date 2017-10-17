@@ -1,3 +1,8 @@
+// App: Sensor Collector
+// Author: Waqas Qureshi
+// Course: CS390
+// Instructor: Dr. Corser
+
 package com.example.bradleychippi.water_test_kit;
 
 import android.app.FragmentManager;
@@ -42,6 +47,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+
+/**
+ * @author Waqas Qureshi
+ * */
 
 public class DataEntryPage extends AppBaseActivity {
 
@@ -245,6 +254,9 @@ public class DataEntryPage extends AppBaseActivity {
     }
 
 
+
+    /**
+     * Menu by Bradley Chippi*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

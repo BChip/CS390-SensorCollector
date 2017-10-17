@@ -19,6 +19,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+/**
+ * @author Bradley Chippi
+ * */
+
 abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
     private FrameLayout view_stub; //This is the framelayout to keep your content view
     private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy

@@ -1,7 +1,12 @@
+// App: Sensor Collector
+// Author: Waqas Qureshi
+// Course: CS390
+// Instructor: Dr. Corser
+
 package com.example.bradleychippi.water_test_kit;
 
 /**
- * Created by waqas on 9/3/2017.
+ * @author Waqas Qureshi
  */
 
 public class ListModel {
