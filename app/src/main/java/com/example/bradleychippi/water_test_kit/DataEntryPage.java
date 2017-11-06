@@ -140,6 +140,8 @@ public class DataEntryPage extends AppBaseActivity {
     //Change activities
     public void ViewData(View v){
         Intent DataTable = new Intent(this, SensorTable.class);
+        Log.e("LIST", "ViewData: " + sensors );
+        DataTable.putStringArrayListExtra("SENSORLIST", (ArrayList<String>) sensors);
         startActivity(DataTable);
     }
 
