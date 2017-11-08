@@ -93,7 +93,7 @@ public class DataEntryPage extends AppBaseActivity {
             Log.d(TAG, "onCreate: "+ currentCity);
         }
 
-        currentLocation.setText(currentCity, TextView.BufferType.EDITABLE);
+        currentLocation.setHint(currentCity);
 
         //Populate spinner with sensor list
         final Spinner sensorSpinner = (Spinner) findViewById(R.id.SensorSpinner);
