@@ -57,6 +57,7 @@ public class ListItemAdapter extends BaseAdapter {
         public TextView datum;
         public TextView day;
         public TextView place;
+        public TextView note;
     }
 
     @Override
@@ -71,6 +72,7 @@ public class ListItemAdapter extends BaseAdapter {
             holder.datum = (TextView) vi.findViewById(R.id.ColumnData);
             holder.day = (TextView) vi.findViewById(R.id.ColumnDateTime);
             holder.place = (TextView) vi.findViewById(R.id.ColumnLocation);
+            holder.note = (TextView) vi.findViewById(R.id.ColumnNote);
 
             vi.setTag(holder);
             //convertView = cellInflater.inflate(R.layout.item_table_row,parent,false);
@@ -88,6 +90,7 @@ public class ListItemAdapter extends BaseAdapter {
             holder.datum.setText(temp.getData());
             holder.day.setText(temp.getDateTime());
             holder.place.setText(temp.getLocation());
+            holder.note.setText(temp.getNote());
         }
 //        TextView loc = (TextView) convertView.findViewById(R.id.ColumnLocation);
 //        TextView dateTime = (TextView) convertView.findViewById(R.id.ColumnDateTime);

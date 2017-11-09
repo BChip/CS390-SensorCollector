@@ -34,7 +34,7 @@ import static com.example.bradleychippi.water_test_kit.R.id.parent;
  * @author Waqas Qureshi
  * */
 
-public class SensorTable extends AppCompatActivity {
+public class SensorTable extends AppBaseActivity {
 
     ListView list;
     ListItemAdapter listAdapter;
@@ -92,7 +92,7 @@ public class SensorTable extends AppCompatActivity {
                             for(DataSnapshot infoSnap : dataSnapshot.getChildren()){
                                 Log.e("INFOSNAP", "onDataChange: " + infoSnap.getValue());
                                 final Map<String, String> itemData = (HashMap<String, String>) infoSnap.getValue();
-                                SensorData sData = new SensorData(itemData.get("Data"), itemData.get("Date"), itemData.get("Location"));
+                                SensorData sData = new SensorData(itemData.get("Data"), itemData.get("Date"), itemData.get("Location"), itemData.get("Note"));
                                 //Log.e("ITEM", "onDataChange: " + itemData.get("Data"));
                                 Log.e("SDATA", "onDataChange: " + sData.toString());
                                 listData.add(sData);
@@ -101,10 +101,12 @@ public class SensorTable extends AppCompatActivity {
                             List<String> info = new ArrayList<>();
                             List<String> date = new ArrayList<>();
                             List<String> location = new ArrayList<>();
+                            List<String> note = new ArrayList<>();
                             for(int i = 0; i < listData.size(); i++){
                                 info.add(listData.get(i).getInfo());
                                 date.add(listData.get(i).getDate());
                                 location.add(listData.get(i).getLoc());
+                                note.add(listData.get(i).getNote());
                             }
                             Log.e("INFO SIZE", "onItemSelected: "+ info);
                             String[] infoArray = new String[info.size()];
@@ -113,9 +115,11 @@ public class SensorTable extends AppCompatActivity {
                             dateArray = date.toArray(dateArray);
                             String[] locArray = new String[location.size()];
                             locArray = location.toArray(locArray);
+                            String [] noteArray = new String[note.size()];
+                            noteArray = note.toArray(noteArray);
 
                             for(int i=0; i<infoArray.length; i++) {
-                                final ListModel item = new ListModel(infoArray[i], dateArray[i], locArray[i]);
+                                final ListModel item = new ListModel(infoArray[i], dateArray[i], locArray[i], noteArray[i]);
                                 customList.add(item);
                             }
                             Log.e("Check", "ArraySize: " + customList.size());

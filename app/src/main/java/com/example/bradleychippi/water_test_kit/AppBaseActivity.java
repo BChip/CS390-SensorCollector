@@ -12,12 +12,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import java.util.ArrayList;
 
 /**
  * @author Bradley Chippi
@@ -116,7 +119,7 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
                 Intent dataEntry = new Intent(this, DataEntryPage.class);
                 startActivity(dataEntry);
                 break;
-            // and so on...
+
         }
         return false;
     }

@@ -9,12 +9,11 @@
 
     <Spinner
         android:id="@+id/TableSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="335dp"
+        android:layout_height="23dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        ></Spinner>
+        app:layout_constraintTop_toTopOf="parent"></Spinner>
     <LinearLayout
         android:id="@+id/HeaderRow"
         android:layout_width="368dp"
@@ -38,6 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Data"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Note"/>
     </LinearLayout>
 
     <ListView

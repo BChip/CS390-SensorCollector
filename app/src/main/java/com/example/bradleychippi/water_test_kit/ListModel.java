@@ -10,14 +10,13 @@ package com.example.bradleychippi.water_test_kit;
  */
 
 public class ListModel {
-    private String data;
-    private String dateTime;
-    private String location;
+    private String data, dateTime, location, note;
 
-    public ListModel(String data, String dateTime, String location){
+    public ListModel(String data, String dateTime, String location, String note){
         this.data = data;
         this.dateTime = dateTime;
         this.location = location;
+        this.note = note;
     }
     public String getData(){
         return data;
@@ -28,4 +27,5 @@ public class ListModel {
     public String getLocation(){
         return location;
     }
+    public String getNote() {return note; }
 }

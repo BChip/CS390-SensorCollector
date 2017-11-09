@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/Sensors"
-        android:title="Sensors"/>
+        android:title="Add Sensors"/>
     <item
         android:id="@+id/Data_Entry"
         android:title="Data Entry"/>
+
 
 </menu>

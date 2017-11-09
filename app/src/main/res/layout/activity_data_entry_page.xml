@@ -8,8 +8,8 @@
 
     <Spinner
         android:id="@+id/SensorSpinner"
-        android:layout_width="131dp"
-        android:layout_height="33dp"
+        android:layout_width="191dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
@@ -20,23 +20,22 @@
 
     <EditText
         android:id="@+id/CurrentData"
-        android:layout_width="223dp"
-        android:layout_height="30dp"
+        android:layout_width="278dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:hint="Data"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SensorSpinner" />
 
     <EditText
         android:id="@+id/Location"
-        android:layout_width="221dp"
-        android:layout_height="32dp"
+        android:layout_width="280dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -56,13 +55,14 @@
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:onClick="onSubmit"
         android:padding="10dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Location" />
+        app:layout_constraintTop_toBottomOf="@+id/Note" />
 
     <Button
         android:id="@+id/ViewData"
@@ -72,7 +72,7 @@
         android:layout_marginStart="244dp"
         android:layout_marginTop="8dp"
         android:onClick="ViewData"
-        android:text="Sensor Data"
+        android:text="View Data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,11 +83,25 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="56dp"
         android:text="Sensor:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Note"
+        android:layout_width="280dp"
+        android:layout_height="122dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Note"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Location" />
 
 </android.support.constraint.ConstraintLayout>

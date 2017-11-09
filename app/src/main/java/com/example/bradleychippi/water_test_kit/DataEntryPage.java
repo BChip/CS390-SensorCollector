@@ -57,10 +57,8 @@ public class DataEntryPage extends AppBaseActivity {
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
 
     private FusedLocationProviderClient mFusedLocationClient;
-    protected Location mLastLocation;
-    private double latitude, longitude;
 
-    EditText currentData, currentLocation;
+    EditText currentData, currentLocation, noteText;
     Button addToTable, viewData;
     //final Spinner sensorSpinner = (Spinner) findViewById(R.id.SensorSpinner);
 
@@ -79,21 +77,26 @@ public class DataEntryPage extends AppBaseActivity {
         addToTable = (Button) findViewById(R.id.SendToDB);
         currentData = (EditText) findViewById(R.id.CurrentData);
         currentLocation = (EditText) findViewById(R.id.Location);
+        noteText = (EditText) findViewById(R.id.Note);
+
+        double latitude, longitude = 0.0;
 
         //populate location edit text
-        String currentCity = "Enter City Name";
+        String currentCity = "Location";
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (!checkPermissions()) {
             requestPermissions();
         } else {
-            getLastLocation();
-            currentCity = cityLocation(latitude,longitude);
-            if(currentCity.equals("")) currentCity = "Enter City Name";
-            Log.d(TAG, "onCreate: "+ currentCity);
+            Loc location = new Loc(this);
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            if(latitude + longitude != 0.0){
+                currentCity = cityLocation(latitude,longitude);
+            }
         }
 
-        currentLocation.setHint(currentCity);
+        currentLocation.setText(currentCity);
 
         //Populate spinner with sensor list
         final Spinner sensorSpinner = (Spinner) findViewById(R.id.SensorSpinner);
@@ -132,8 +135,6 @@ public class DataEntryPage extends AppBaseActivity {
 
         if (!checkPermissions()) {
             requestPermissions();
-        } else {
-            getLastLocation();
         }
     }
 
@@ -152,6 +153,7 @@ public class DataEntryPage extends AppBaseActivity {
         String sensorName = sensor.getSelectedItem().toString();
         String data = currentData.getText().toString();
         String loc = currentLocation.getText().toString();
+        String note = noteText.getText().toString();
         Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String formattedDate = df.format(currentDate);
@@ -161,6 +163,7 @@ public class DataEntryPage extends AppBaseActivity {
         userData.put("Data", data);
         userData.put("Date", formattedDate);
         userData.put("Location", loc);
+        userData.put("Note", note);
         DatabaseReference dRef = database.getReference("Sensors");
         dRef.child(sensorName).push().setValue(userData);
         //clear values
@@ -235,54 +238,6 @@ public class DataEntryPage extends AppBaseActivity {
         return city;
     }
 
-    @SuppressWarnings("MissingPermission")
-    private void getLastLocation() {
-        mFusedLocationClient.getLastLocation()
-            .addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    if (task.isSuccessful() && task.getResult() != null) {
-
-                        mLastLocation = task.getResult();
-                        latitude = mLastLocation.getLatitude();
-                        longitude = mLastLocation.getLongitude();
-                        Log.d("Location", "onComplete: " + latitude + " " + longitude);
-
-                    } else {
-                        Log.w(TAG, "getLastLocation:exception", task.getException());
-                    }
-                }
-            });
-    }
 
 
-
-    /**
-     * Menu by Bradley Chippi*/
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Sensors:
-                Intent addSensor = new Intent(this, Sensors.class);
-                startActivity(addSensor);
-                return true;
-
-            case R.id.Data_Entry:
-                Intent dataEntry = new Intent(this, DataEntryPage.class);
-                startActivity(dataEntry);
-                return true;
-
-            default:
-
-                return super.onOptionsItemSelected(item);
-
-        }
-    }
 }
