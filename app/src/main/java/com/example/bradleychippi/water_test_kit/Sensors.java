@@ -5,17 +5,11 @@
 
 package com.example.bradleychippi.water_test_kit;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,8 +25,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * This activity takes care of adding new sensors to the application.
+ * The data is pushed to a real-time Firebase database.
+ *
  * @author Bradley Chippi
- * */
+ * @version 1.0 Nov 23, 2017
+ */
 
 public class Sensors extends AppBaseActivity {
 
@@ -41,6 +39,12 @@ public class Sensors extends AppBaseActivity {
     final DatabaseReference myRef = database.getReference("Sensors");
     List<String> list = new ArrayList<String>();
 
+    /**
+     * Starts up the activity and initiates the logic for the spinner and intiates the event
+     * listener for changes happening in the real-time Firebase database.
+     *
+     * @param   savedInstanceState   Bundle object containing the activity's previously saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +84,11 @@ public class Sensors extends AppBaseActivity {
 
     }
 
+    /**
+     * Adds sensors to real-time Firebase database
+     *
+     * @param   v   view
+     */
     public void sendToFireBase(View v) {
         EditText edit_text = (EditText) findViewById(R.id.editText);
         String sensorToAdd = edit_text.getText().toString().toUpperCase();
@@ -90,6 +99,11 @@ public class Sensors extends AppBaseActivity {
         Toast.makeText(getApplicationContext(), "ADDED: "+sensorToAdd, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Deletes sensors from real-time Firebase database
+     *
+     * @param   v   view
+     */
     public void deleteFromFirebase(View v){
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         String sensor = spinner.getSelectedItem().toString();

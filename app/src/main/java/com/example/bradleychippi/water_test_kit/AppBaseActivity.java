@@ -12,7 +12,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,19 +19,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import java.util.ArrayList;
-
 /**
+ * This is a abstract class that activities should extend off of if you want a navigation drawer
+ * in that activity.
+ *
  * @author Bradley Chippi
- * */
+ * @version 1.0 Nov 23, 2017
+ */
 
 abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
-    private FrameLayout view_stub; //This is the framelayout to keep your content view
-    private NavigationView navigation_view; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
+    private FrameLayout view_stub;
+    private NavigationView navigation_view;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private Menu drawerMenu;
 
+    /**
+     * Starts up the navigation drawer view.
+     *
+     * @param savedInstanceState Bundle object containing the activity's previously saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,20 +57,33 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
         // and so on...
     }
 
+    /**
+     * Required
+     *
+     * @param savedInstanceState Bundle object containing the activity's previously saved state
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
 
+    /**
+     * Required
+     *
+     * @param newConfig Configuration
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /* Override all setContentView methods to put the content view to the FrameLayout view_stub
+    /**
+     * Override all setContentView methods to put the content view to the FrameLayout view_stub
      * so that, we can make other activity implementations looks like normal activity subclasses.
+     *
+     * @param layoutResID   int
      */
     @Override
     public void setContentView(int layoutResID) {
@@ -78,6 +97,11 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
         }
     }
 
+    /**
+     * Sets view
+     *
+     * @param view  View
+     */
     @Override
     public void setContentView(View view) {
         if (view_stub != null) {
@@ -88,6 +112,12 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
         }
     }
 
+    /**
+     * Adds view
+     *
+     * @param view  View
+     * @param params    Layout Parameters
+     */
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         if (view_stub != null) {
@@ -95,6 +125,12 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
         }
     }
 
+    /**
+     * When option items are selected
+     *
+     * @param item MenuItem
+     * @return  bool
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle, if it returns
@@ -107,6 +143,12 @@ abstract class AppBaseActivity extends AppCompatActivity implements MenuItem.OnM
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * When menu item is clicked
+     *
+     * @param item  MenuItem
+     * @return  bool
+     */
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {

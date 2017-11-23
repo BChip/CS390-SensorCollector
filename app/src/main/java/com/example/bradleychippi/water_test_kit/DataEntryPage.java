@@ -5,32 +5,23 @@
 
 package com.example.bradleychippi.water_test_kit;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,8 +36,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
 
 /**
  * @author Waqas Qureshi
@@ -88,15 +77,19 @@ public class DataEntryPage extends AppBaseActivity {
         if (!checkPermissions()) {
             requestPermissions();
         } else {
+            //If you are trying to emulate this app, comment out everything until....
             Loc location = new Loc(this);
             latitude = location.getLatitude();
             longitude = location.getLongitude();
             if(latitude + longitude != 0.0){
                 currentCity = cityLocation(latitude,longitude);
             }
+            //this
         }
-
-        currentLocation.setText(currentCity);
+        if(currentCity == "Location")
+            currentLocation.setHint(currentCity);
+        else
+            currentLocation.setText(currentCity);
 
         //Populate spinner with sensor list
         final Spinner sensorSpinner = (Spinner) findViewById(R.id.SensorSpinner);
@@ -168,6 +161,7 @@ public class DataEntryPage extends AppBaseActivity {
         dRef.child(sensorName).push().setValue(userData);
         //clear values
         currentData.setText("");
+        noteText.setText("");
         Toast.makeText(getApplicationContext(), "Added New Data to Sensor " + sensorName, Toast.LENGTH_SHORT).show();
     }
 

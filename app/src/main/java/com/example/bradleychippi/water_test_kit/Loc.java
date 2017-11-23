@@ -1,10 +1,10 @@
+// App: Sensor Collector
+// Author: Bradley Chippi
+// Course: CS390
+// Instructor: Dr. Corser
+
 package com.example.bradleychippi.water_test_kit;
 
-/**
- * Created by bradleychippi on 11/08/17.
- */
-
-import android.app.Service;
 import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
@@ -12,6 +12,14 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+
+/**
+ * This class utilizes the location services in Android to grab the last known latitude
+ * and longitude.
+ *
+ * @author Bradley Chippi
+ * @version 1.0 Nov 23, 2017
+ */
 
 public class Loc implements LocationListener {
 
@@ -21,6 +29,12 @@ public class Loc implements LocationListener {
     private Criteria criteria;
     private String provider;
 
+    /**
+     * Location constructor. Initiates location manager with fine accuracy, then requests
+     * location updates.
+     *
+     * @param context   Current state of app
+     */
     public Loc(Context context) {
         locationManager = (LocationManager) context
                 .getSystemService(Context.LOCATION_SERVICE);
@@ -39,10 +53,20 @@ public class Loc implements LocationListener {
 
     }
 
+    /**
+     * Required
+     *
+     * @param lastKnownLocation
+     */
     private void setMostRecentLocation(Location lastKnownLocation) {
 
     }
 
+    /**
+     * Gets last known latitude
+     *
+     * @return latitute
+     */
     public Double getLatitude() {
         try {
             return locationManager.getLastKnownLocation(provider).getLatitude();
@@ -52,6 +76,11 @@ public class Loc implements LocationListener {
         return 0.0;
     }
 
+    /**
+     *Gets last known longitude
+     *
+     * @return longitude
+     */
     public Double getLongitude() {
         try {
             return locationManager.getLastKnownLocation(provider).getLongitude();
@@ -61,58 +90,49 @@ public class Loc implements LocationListener {
         return 0.0;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Required
      *
-     * @see
-     * android.location.LocationListener#onLocationChanged(android.location.
-     * Location)
+     * @param location
      */
     @Override
     public void onLocationChanged(Location location) {
         double lon = (double) (location.getLongitude());/// * 1E6);
         double lat = (double) (location.getLatitude());// * 1E6);
         Log.d("LOC", Double.toString(location.getLatitude()));
-//      int lontitue = (int) lon;
-//      int latitute = (int) lat;
         latitude = lat + "";
         longitude = lon + "";
-
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Required
      *
-     * @see
-     * android.location.LocationListener#onProviderDisabled(java.lang.String)
+     * @param arg0
      */
     @Override
     public void onProviderDisabled(String arg0) {
-        // TODO Auto-generated method stub
 
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Required
      *
-     * @see
-     * android.location.LocationListener#onProviderEnabled(java.lang.String)
+     * @param arg0
      */
     @Override
     public void onProviderEnabled(String arg0) {
-        // TODO Auto-generated method stub
 
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Required
      *
-     * @see android.location.LocationListener#onStatusChanged(java.lang.String,
-     * int, android.os.Bundle)
+     * @param arg0
+     * @param arg1
+     * @param arg2
      */
     @Override
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
-        // TODO Auto-generated method stub
 
     }
 
