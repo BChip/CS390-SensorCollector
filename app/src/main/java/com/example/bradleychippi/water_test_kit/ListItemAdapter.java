@@ -19,6 +19,8 @@ import java.util.Date;
 import static android.content.ContentValues.TAG;
 
 /**
+ * This class allows the information to be displayed in a custom
+ * way in the SensorTable activity.
  * @author Waqas Qureshi
  * */
 

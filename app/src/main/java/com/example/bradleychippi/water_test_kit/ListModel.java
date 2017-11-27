@@ -6,6 +6,7 @@
 package com.example.bradleychippi.water_test_kit;
 
 /**
+ * This class is used to hold the information for the sensor table
  * @author Waqas Qureshi
  */
 

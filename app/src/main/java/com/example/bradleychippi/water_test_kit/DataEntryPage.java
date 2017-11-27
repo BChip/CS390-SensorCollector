@@ -38,6 +38,11 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
+ * This activity class is the main data entry page.
+ * At the start it displays a city location.
+ * After data is entered, the submit button sends
+ * the data to a firebase database.
+ * View Data opens the Sensor Table activity.
  * @author Waqas Qureshi
  * */
 
@@ -56,6 +61,11 @@ public class DataEntryPage extends AppBaseActivity {
     final DatabaseReference myRef = database.getReference("Sensors");
     List<String> sensors = new ArrayList<String>();
 
+    /**
+     * onCreate contains the start up information
+     * including city name, and displays the
+     * entry lines and submit and table buttons.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +132,9 @@ public class DataEntryPage extends AppBaseActivity {
         });
     }
 
+    /**
+     * onStart the app requests location permissions.
+     * */
     @Override
     public void onStart() {
         super.onStart();
@@ -131,6 +144,10 @@ public class DataEntryPage extends AppBaseActivity {
         }
     }
 
+    /**
+     * ViewData takes the sensor list and
+     * opens the SensorTable activity.
+     * */
     //Change activities
     public void ViewData(View v){
         Intent DataTable = new Intent(this, SensorTable.class);
@@ -139,7 +156,10 @@ public class DataEntryPage extends AppBaseActivity {
         startActivity(DataTable);
     }
 
-    //Send data to database
+    /**
+     * onSubmit packages and sends the data to the firebase database
+     * and displays a toast message.
+     * */
     public void onSubmit(View view){
         //Send data to firebase db and clear edit text values
         Spinner sensor = (Spinner) findViewById(R.id.SensorSpinner);
@@ -179,7 +199,7 @@ public class DataEntryPage extends AppBaseActivity {
                 new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                 REQUEST_PERMISSIONS_REQUEST_CODE);
     }
-
+    //Display request
     private void showSnackbar(final int mainTextStringId, final int actionStringId,
                               View.OnClickListener listener) {
         Snackbar.make(findViewById(android.R.id.content),

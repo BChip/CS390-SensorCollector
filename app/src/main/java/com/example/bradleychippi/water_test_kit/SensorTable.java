@@ -31,6 +31,8 @@ import java.util.Map;
 import static com.example.bradleychippi.water_test_kit.R.id.parent;
 
 /**
+ * This activity uses a custom adapter to display
+ * data, based on sensor selected from the spinner.
  * @author Waqas Qureshi
  * */
 
@@ -52,6 +54,9 @@ public class SensorTable extends AppBaseActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("Sensors");
 
+    /**
+     * onCreate contains the spinner and database reference listeners
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +86,7 @@ public class SensorTable extends AppBaseActivity {
                 //final DatabaseReference nameRef = database.getReference(sensorName);  //Issue Here!
                 final DatabaseReference nameRef = myRef.child(sensorName);
                 Log.e("CHECK KEY", "onItemSelected: " + nameRef.getKey() );
-
+                //set database reference listener
                 nameRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
