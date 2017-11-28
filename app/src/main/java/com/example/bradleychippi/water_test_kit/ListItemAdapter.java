@@ -14,7 +14,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import static android.content.ContentValues.TAG;
 
